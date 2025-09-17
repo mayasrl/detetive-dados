@@ -204,12 +204,6 @@ Contribuições são sempre bem-vindas! Para contribuir:
 
 ---
 
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
 ## 👥 Equipe de Desenvolvimento
 
 **Projeto de TCC - Ciência da Computação**
@@ -219,19 +213,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 - **Brenda** - Desenvolvedora  
 - **João** - Desenvolvedor
 - **Rebeca** - Desenvolvedora
-- **Maya Silveira** - Desenvolvedora Principal
-  - GitHub: [@mayasrl](https://github.com/mayasrl)
-  - LinkedIn: [Maya Silveira](https://linkedin.com/in/mayasilveira)
-
----
-
-## 🎮 Jogue Agora!
-
-<div align="center">
-
-### **[🚀 COMEÇAR A INVESTIGAÇÃO](https://mayasrl.github.io/detetive-dados/)**
-
-*Desvende o mistério de Neon-City e torne-se um mestre em SQL!*
 
 ---
 
