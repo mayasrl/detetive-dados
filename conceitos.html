@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aprenda sobre banco de dados e SQL de forma visual e detalhada">
+    
+    <title>O que é Banco de Dados? - Detetive de Dados</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="content-page">
+        <a href="index.html" class="back-btn">← Voltar ao Menu</a>
+        
+        <div class="page-header">
+            <h1>🗄️ O que é Banco de Dados?</h1>
+            <p>Conceitos fundamentais explicados de forma visual e prática</p>
+        </div>
+
+        <div class="content-section">
+            <h2>🏗️ Conceitos Fundamentais</h2>
+            
+            <h3>O que é um Banco de Dados?</h3>
+            <p>Um <strong>banco de dados</strong> é como um arquivo digital super organizado que armazena informações de forma estruturada. Imagine uma biblioteca gigante onde cada livro tem seu lugar específico e você pode encontrar qualquer informação rapidamente.</p>
+            
+            <div class="command-example">
+                <strong>Analogia:</strong> Se uma planilha Excel é como uma gaveta de arquivos, um banco de dados é como um prédio inteiro de arquivos interconectados, onde você pode encontrar qualquer informação em segundos.
+            </div>
+
+            <h3>Por que usar Banco de Dados?</h3>
+            <ul>
+                <li><strong>📊 Organização:</strong> Dados estruturados e relacionados</li>
+                <li><strong>🔍 Busca rápida:</strong> Encontre informações instantaneamente</li>
+                <li><strong>🔒 Segurança:</strong> Controle de acesso e backup automático</li>
+                <li><strong>🤝 Compartilhamento:</strong> Múltiplos usuários simultaneamente</li>
+                <li><strong>📈 Escalabilidade:</strong> Cresce conforme necessário</li>
+            </ul>
+        </div>
+
+        <div class="content-section">
+            <h2>🏛️ Estrutura de um Banco de Dados</h2>
+            
+            <div class="command-card">
+                <h4>📋 Tabelas</h4>
+                <p>Uma <strong>tabela</strong> é como uma planilha com linhas e colunas. Cada tabela armazena um tipo específico de informação.</p>
+                
+                <div class="command-example">
+                    <strong>Exemplo no jogo:</strong><br>
+                    • Tabela <code>cidadaos</code> → Informações dos personagens<br>
+                    • Tabela <code>veiculos</code> → Informações dos veículos
+                </div>
+                
+                <div class="command-syntax">
+                    Tabela "cidadaos"
+                    ┌────┬─────────────┬──────────┬───────────┐
+                    │ id │    nome     │   tipo   │  cidade   │
+                    ├────┼─────────────┼──────────┼───────────┤
+                    │ 1  │ X-7 Phantom │ androide │ Neon-City │
+                    │ 2  │ Maya Chen   │ humano   │ Neon-City │
+                    └────┴─────────────┴──────────┴───────────┘
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>📏 Colunas (Campos)</h4>
+                <p>As <strong>colunas</strong> definem que tipo de informação será armazenada. Cada coluna tem um nome e um tipo de dado.</p>
+                
+                <ul>
+                    <li><strong>id:</strong> Número único para identificar cada registro</li>
+                    <li><strong>nome:</strong> Texto com o nome do personagem</li>
+                    <li><strong>tipo:</strong> Categoria (humano, androide, robô)</li>
+                    <li><strong>idade:</strong> Número representando a idade</li>
+                    <li><strong>cidade:</strong> Texto com o local de residência</li>
+                </ul>
+            </div>
+
+            <div class="command-card">
+                <h4>📄 Linhas (Registros)</h4>
+                <p>Cada <strong>linha</strong> representa um item completo. No nosso jogo, cada linha é um personagem diferente.</p>
+                
+                <div class="command-example">
+                    <strong>Linha 1:</strong> id=1, nome="X-7 Phantom", tipo="androide", cidade="Neon-City"<br>
+                    <strong>Linha 2:</strong> id=2, nome="Maya Chen", tipo="humano", cidade="Neon-City"
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🔑 Chaves Primárias e Estrangeiras</h4>
+                <p><strong>Chave Primária:</strong> Coluna que identifica unicamente cada registro (geralmente 'id')</p>
+                <p><strong>Chave Estrangeira:</strong> Coluna que conecta uma tabela a outra</p>
+                
+                <div class="command-syntax">
+                    Tabela "veiculos"
+                    ┌────┬─────────────┬─────────────────┐
+                    │ id │   modelo    │ proprietario_id │ ← Chave Estrangeira
+                    ├────┼─────────────┼─────────────────┤
+                    │ 1  │ Cyber-Bike  │       1         │ → Conecta ao cidadão id=1
+                    │ 2  │ Hover-Car   │       2         │ → Conecta ao cidadão id=2
+                    └────┴─────────────┴─────────────────┘
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>💬 O que é SQL?</h2>
+            
+            <p><strong>SQL (Structured Query Language)</strong> é a linguagem que usamos para "conversar" com o banco de dados. É como aprender o idioma que o banco entende.</p>
+            
+            <div class="command-example">
+                <strong>Analogia:</strong> Se o banco de dados é uma biblioteca, SQL é como você pede ao bibliotecário: "Por favor, me traga todos os livros de ficção científica escritos em 2020."
+            </div>
+
+            <h3>🎯 SQL é Declarativo</h3>
+            <p>Você diz <strong>O QUE</strong> quer, não <strong>COMO</strong> fazer. O banco descobre a melhor forma de buscar.</p>
+            
+            <div class="command-card">
+                <h4>Exemplo Prático</h4>
+                <p><strong>Você quer:</strong> "Todos os androides de Neon-City"</p>
+                <p><strong>Em SQL:</strong></p>
+                <div class="command-syntax">
+                    SELECT * FROM cidadaos 
+                    WHERE tipo = 'androide' AND cidade = 'Neon-City'
+                </div>
+                <p><strong>O banco entende:</strong> "Vou procurar na tabela cidadaos, filtrar por tipo=androide E cidade=Neon-City, e retornar todos os dados desses registros."</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>⚡ Comandos SQL Detalhados</h2>
+            
+            <div class="command-card">
+                <h4>🔍 SELECT - Selecionar Dados</h4>
+                <p>O comando mais importante! Usado para <strong>buscar</strong> informações no banco.</p>
+                
+                <div class="command-syntax">
+                    SELECT coluna1, coluna2 FROM tabela
+                </div>
+                
+                <h5>Variações:</h5>
+                <ul>
+                    <li><code>SELECT *</code> → Todas as colunas</li>
+                    <li><code>SELECT nome</code> → Apenas a coluna nome</li>
+                    <li><code>SELECT nome, idade</code> → Colunas nome e idade</li>
+                </ul>
+                
+                <div class="command-example">
+                    <strong>No jogo:</strong><br>
+                    <code>SELECT * FROM cidadaos</code> → Mostra todos os personagens<br>
+                    <code>SELECT nome FROM cidadaos</code> → Mostra apenas os nomes
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>📋 FROM - Especificar Tabela</h4>
+                <p>Indica <strong>de onde</strong> vêm os dados. Sempre usado junto com SELECT.</p>
+                
+                <div class="command-syntax">
+                    SELECT * FROM nome_da_tabela
+                </div>
+                
+                <div class="command-example">
+                    <strong>Tabelas disponíveis no jogo:</strong><br>
+                    • <code>cidadaos</code> → Personagens da história<br>
+                    • <code>veiculos</code> → Veículos dos personagens
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🎯 WHERE - Filtrar Resultados</h4>
+                <p>Define <strong>condições</strong> para filtrar os dados. Como um filtro de pesquisa.</p>
+                
+                <div class="command-syntax">
+                    SELECT * FROM tabela WHERE condição
+                </div>
+                
+                <h5>Operadores de Comparação:</h5>
+                <ul>
+                    <li><code>=</code> → Igual a</li>
+                    <li><code>></code> → Maior que</li>
+                    <li><code><</code> → Menor que</li>
+                    <li><code>>=</code> → Maior ou igual</li>
+                    <li><code><=</code> → Menor ou igual</li>
+                    <li><code>!=</code> ou <code><></code> → Diferente de</li>
+                </ul>
+                
+                <div class="command-example">
+                    <strong>Exemplos práticos:</strong><br>
+                    <code>WHERE idade > 30</code> → Personagens com mais de 30 anos<br>
+                    <code>WHERE cidade = 'Neon-City'</code> → Moradores de Neon-City<br>
+                    <code>WHERE tipo = 'androide'</code> → Apenas androides
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🔗 AND, OR, NOT - Lógica Booleana</h4>
+                <p>Combinam múltiplas condições para filtros mais específicos.</p>
+                
+                <div class="command-syntax">
+                    WHERE condição1 AND condição2
+                    WHERE condição1 OR condição2
+                    WHERE NOT condição
+                </div>
+                
+                <h5>Como funcionam:</h5>
+                <ul>
+                    <li><strong>AND:</strong> Ambas condições devem ser verdadeiras</li>
+                    <li><strong>OR:</strong> Pelo menos uma condição deve ser verdadeira</li>
+                    <li><strong>NOT:</strong> Inverte a condição (verdadeiro vira falso)</li>
+                </ul>
+                
+                <div class="command-example">
+                    <strong>Exemplos:</strong><br>
+                    <code>WHERE tipo = 'humano' AND idade > 25</code> → Humanos com mais de 25 anos<br>
+                    <code>WHERE cidade = 'Neon-City' OR cidade = 'Cyber-District'</code> → Duas cidades<br>
+                    <code>WHERE NOT tipo = 'robô'</code> → Todos exceto robôs
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🔎 LIKE - Busca por Padrões</h4>
+                <p>Busca textos que <strong>contêm</strong> determinados caracteres. Útil quando não sabemos o texto exato.</p>
+                
+                <div class="command-syntax">
+                    WHERE coluna LIKE 'padrão'
+                </div>
+                
+                <h5>Caracteres Especiais:</h5>
+                <ul>
+                    <li><code>%</code> → Representa qualquer sequência de caracteres</li>
+                    <li><code>_</code> → Representa um único caractere</li>
+                </ul>
+                
+                <div class="command-example">
+                    <strong>Exemplos:</strong><br>
+                    <code>WHERE nome LIKE 'X-%'</code> → Nomes que começam com "X-"<br>
+                    <code>WHERE nome LIKE '%Chen%'</code> → Nomes que contêm "Chen"<br>
+                    <code>WHERE nome LIKE '_-7%'</code> → Nomes como "X-7", "A-7", etc.
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🔗 INNER JOIN - Relacionar Tabelas</h4>
+                <p>Combina dados de <strong>duas ou mais tabelas</strong> baseado em uma relação entre elas.</p>
+                
+                <div class="command-syntax">
+                    SELECT * FROM tabela1 
+                    INNER JOIN tabela2 ON tabela1.id = tabela2.chave_estrangeira
+                </div>
+                
+                <div class="command-example">
+                    <strong>Exemplo no jogo:</strong><br>
+                    <code>SELECT cidadaos.nome, veiculos.modelo<br>
+                    FROM cidadaos<br>
+                    INNER JOIN veiculos ON cidadaos.id = veiculos.proprietario_id</code><br><br>
+                    <strong>Resultado:</strong> Lista de personagens e seus veículos
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>⬅️ LEFT JOIN - Incluir Dados Ausentes</h4>
+                <p>Similar ao INNER JOIN, mas <strong>inclui todos</strong> os registros da tabela da esquerda, mesmo sem correspondência.</p>
+                
+                <div class="command-syntax">
+                    SELECT * FROM tabela1 
+                    LEFT JOIN tabela2 ON tabela1.id = tabela2.chave_estrangeira
+                </div>
+                
+                <div class="command-example">
+                    <strong>Diferença:</strong><br>
+                    • <strong>INNER JOIN:</strong> Só mostra personagens QUE TÊM veículos<br>
+                    • <strong>LEFT JOIN:</strong> Mostra TODOS os personagens, com ou sem veículos
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🔢 COUNT - Contar Registros</h4>
+                <p>Conta quantos registros existem. Útil para estatísticas.</p>
+                
+                <div class="command-syntax">
+                    SELECT COUNT(*) FROM tabela
+                    SELECT COUNT(coluna) FROM tabela
+                </div>
+                
+                <div class="command-example">
+                    <strong>Exemplos:</strong><br>
+                    <code>SELECT COUNT(*) FROM cidadaos</code> → Total de personagens<br>
+                    <code>SELECT COUNT(*) FROM cidadaos WHERE tipo = 'androide'</code> → Total de androides
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🎯 COUNT DISTINCT - Contar Únicos</h4>
+                <p>Conta apenas valores <strong>diferentes</strong> (únicos) em uma coluna.</p>
+                
+                <div class="command-syntax">
+                    SELECT COUNT(DISTINCT coluna) FROM tabela
+                </div>
+                
+                <div class="command-example">
+                    <strong>Exemplo:</strong><br>
+                    <code>SELECT COUNT(DISTINCT cidade) FROM cidadaos</code><br>
+                    → Quantas cidades diferentes existem no banco
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🎮 Dados do Jogo</h2>
+            
+            <h3>Tabela: cidadaos</h3>
+            <div class="command-card">
+                <h4>📊 Estrutura da Tabela</h4>
+                <div class="command-syntax">
+                    cidadaos
+                    ├── id (INTEGER) - Identificador único
+                    ├── nome (TEXT) - Nome do personagem
+                    ├── tipo (TEXT) - humano, androide, robô, pet-bot
+                    ├── idade (INTEGER) - Idade em anos
+                    ├── cidade (TEXT) - Cidade de residência
+                    ├── profissao (TEXT) - Profissão/função
+                    └── status (TEXT) - ativo, desaparecido, suspeito
+                </div>
+                
+                <h5>Tipos de Personagens:</h5>
+                <ul>
+                    <li><strong>humano:</strong> Investigadores e testemunhas</li>
+                    <li><strong>androide:</strong> Personagens principais da conspiração</li>
+                    <li><strong>robô:</strong> Suspeitos secundários</li>
+                    <li><strong>pet-bot:</strong> Companheiros digitais</li>
+                </ul>
+                
+                <h5>Cidades do Universo:</h5>
+                <ul>
+                    <li><strong>Neon-City:</strong> Metrópole principal</li>
+                    <li><strong>Cyber-District:</strong> Distrito tecnológico</li>
+                    <li><strong>Tech-Zone:</strong> Zona industrial</li>
+                    <li><strong>Shadow-Sector:</strong> Área suspeita</li>
+                </ul>
+            </div>
+
+            <h3>Tabela: veiculos</h3>
+            <div class="command-card">
+                <h4>🚗 Estrutura da Tabela</h4>
+                <div class="command-syntax">
+                    veiculos
+                    ├── id (INTEGER) - Identificador único
+                    ├── modelo (TEXT) - Modelo do veículo
+                    ├── cor (TEXT) - Cor do veículo
+                    ├── ano (INTEGER) - Ano de fabricação
+                    └── proprietario_id (INTEGER) - ID do dono (chave estrangeira)
+                </div>
+                
+                <h5>Tipos de Veículos Futuristas:</h5>
+                <ul>
+                    <li><strong>Cyber-Bike:</strong> Motocicletas tecnológicas</li>
+                    <li><strong>Hover-Car:</strong> Carros flutuantes</li>
+                    <li><strong>Speed-Drone:</strong> Drones de transporte</li>
+                    <li><strong>Patrol-Unit:</strong> Veículos de patrulha</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🎨 Dicas Visuais para Aprender</h2>
+            
+            <div class="command-card">
+                <h4>🧠 Como Pensar em SQL</h4>
+                <ol>
+                    <li><strong>Identifique o objetivo:</strong> O que você quer descobrir?</li>
+                    <li><strong>Escolha a tabela:</strong> Onde estão esses dados?</li>
+                    <li><strong>Selecione as colunas:</strong> Que informações precisa?</li>
+                    <li><strong>Defina os filtros:</strong> Que condições aplicar?</li>
+                    <li><strong>Execute e analise:</strong> Os resultados fazem sentido?</li>
+                </ol>
+            </div>
+
+            <div class="command-card">
+                <h4>📝 Estrutura Mental de uma Consulta</h4>
+                <div class="command-syntax">
+                    SELECT [o que você quer ver]
+                    FROM [onde estão os dados]
+                    WHERE [que condições devem ser atendidas]
+                </div>
+                
+                <div class="command-example">
+                    <strong>Traduzindo para português:</strong><br>
+                    "SELECIONE [nome e idade]<br>
+                     DA TABELA [cidadaos]<br>
+                     ONDE [tipo é igual a 'androide']"
+                </div>
+            </div>
+
+            <div class="command-card">
+                <h4>🔍 Estratégia de Investigação</h4>
+                <ol>
+                    <li><strong>Explore primeiro:</strong> <code>SELECT * FROM tabela</code></li>
+                    <li><strong>Entenda os dados:</strong> Que colunas existem?</li>
+                    <li><strong>Filtre gradualmente:</strong> Adicione WHERE</li>
+                    <li><strong>Refine a busca:</strong> Use AND, OR</li>
+                    <li><strong>Relacione tabelas:</strong> Use JOIN quando necessário</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🧭 Próximos Passos</h2>
+            
+            <div class="welcome-options">
+                <a href="tutorial.html" class="welcome-btn secondary">
+                    📖 COMO JOGAR
+                </a>
+                <a href="casos/caso-01.html" class="welcome-btn primary">
+                    🔍 COMEÇAR INVESTIGAÇÃO
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Log de acesso à página educativa
+        console.log('🗄️ Página "Banco de Dados" carregada');
+        
+        // Rastrear tempo gasto na página (para analytics educacionais)
+        const startTime = Date.now();
+        
+        window.addEventListener('beforeunload', function() {
+            const timeSpent = Math.round((Date.now() - startTime) / 1000);
+            console.log(`⏱️ Tempo gasto estudando: ${timeSpent} segundos`);
+        });
+
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada para cards de comando
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -20% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observar todos os cards de comando
+        document.querySelectorAll('.command-card').forEach(card => {
+            card.style.transform = 'translateY(20px)';
+            card.style.opacity = '0.7';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Destacar código SQL ao passar o mouse
+        document.querySelectorAll('.command-syntax').forEach(syntax => {
+            syntax.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 0 15px rgba(100, 255, 218, 0.3)';
+                this.style.borderColor = 'var(--secondary-text)';
+            });
+            
+            syntax.addEventListener('mouseleave', function() {
+                this.style.boxShadow = 'none';
+                this.style.borderColor = 'var(--border-color)';
+            });
+        });
+
+        // Copiar código SQL ao clicar
+        document.querySelectorAll('.command-syntax').forEach(syntax => {
+            syntax.style.cursor = 'pointer';
+            syntax.title = 'Clique para copiar o código SQL';
+            
+            syntax.addEventListener('click', function() {
+                const text = this.textContent.trim();
+                navigator.clipboard.writeText(text).then(() => {
+                    // Feedback visual
+                    const originalBg = this.style.backgroundColor;
+                    this.style.backgroundColor = 'rgba(100, 255, 218, 0.3)';
+                    
+                    setTimeout(() => {
+                        this.style.backgroundColor = originalBg;
+                    }, 200);
+                    
+                    console.log('📋 Código SQL copiado:', text);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

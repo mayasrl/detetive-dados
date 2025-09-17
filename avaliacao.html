@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avalie sua experiência com o jogo Detetive de Dados">
+    
+    <title>Avaliação do Jogo - Detetive de Dados</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        .iframe-container {
+            background: rgba(15, 52, 96, 0.3);
+            border: 2px solid #16213e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+        
+        .iframe-container iframe {
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .form-intro {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(22, 33, 62, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #00ffff;
+        }
+        
+        .form-intro h2 {
+            color: #00ffff;
+            margin-bottom: 10px;
+        }
+        
+        .loading-message {
+            text-align: center;
+            color: #00ffff;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-page">
+        <a href="index.html" class="back-btn">← Voltar ao Menu</a>
+        
+        <div class="page-header">
+            <h1>📊 Avaliação do Jogo</h1>
+            <p>Sua opinião é fundamental para melhorarmos a experiência educativa</p>
+        </div>
+
+        <div class="form-intro">
+            <h2>🎯 Por que sua avaliação é importante?</h2>
+            <p>Este formulário nos ajuda a entender como o jogo contribuiu para seu aprendizado de SQL e como podemos melhorar a experiência para futuros detetives de dados.</p>
+            
+            <div class="command-example">
+                <strong>⏱️ Tempo estimado:</strong> 3-5 minutos<br>
+                <strong>📊 Dados coletados:</strong> Enviados diretamente para Google Forms<br>
+                <strong>🔒 Privacidade:</strong> Suas respostas nos ajudam a melhorar o jogo
+            </div>
+        </div>
+        
+        <div class="iframe-container">
+            <div class="loading-message">
+                ⏳ Carregando formulário de avaliação...
+            </div>
+            
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfohjcrkNXWYMQa3LlBEDrFZfF_bTOneczQfjzFGFBWp1CO3A/viewform?embedded=true" 
+                    width="100%" 
+                    height="3826" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    onload="document.querySelector('.loading-message').style.display='none'">
+                Loading…
+            </iframe>
+        </div>
+        
+        <div class="content-section">
+            <div class="welcome-options">
+                <a href="index.html" class="welcome-btn secondary">
+                    🏠 VOLTAR AO MENU
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quiz Final - Teste seus conhecimentos em SQL">
+    
+    <title>Quiz Final - Detetive de Dados</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        .iframe-container {
+            background: rgba(15, 52, 96, 0.3);
+            border: 2px solid #16213e;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+        }
+        
+        .iframe-container iframe {
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .quiz-intro {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(22, 33, 62, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #00ffff;
+        }
+        
+        .quiz-intro h2 {
+            color: #00ffff;
+            margin-bottom: 10px;
+        }
+        
+        .loading-message {
+            text-align: center;
+            color: #00ffff;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 20px;
+        }
+        
+        .completion-message {
+            background: rgba(30, 81, 40, 0.8);
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .completion-message h3 {
+            color: #4caf50;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-page">
+        <a href="casos/caso-12.html" class="back-btn">← Voltar ao Caso 12</a>
+        
+        <div class="page-header">
+            <h1>🧠 Quiz Final</h1>
+            <p>Teste seus conhecimentos adquiridos na investigação</p>
+        </div>
+
+        <div class="quiz-intro">
+            <h2>🎯 Hora do Teste Final, Detetive!</h2>
+            <p>Você completou todos os 12 casos da Grande Conspiração dos Dados. Agora é hora de provar que domina as técnicas de investigação SQL!</p>
+            
+            <div class="command-example">
+                <strong>📝 Questões:</strong> 10 perguntas baseadas nos casos<br>
+                <strong>⏱️ Tempo:</strong> Sem limite de tempo<br>
+                <strong>🎯 Objetivo:</strong> Demonstrar conhecimento em SQL<br>
+                <strong>🏆 Resultado:</strong> Classificação como detetive
+            </div>
+        </div>
+        
+        <div class="iframe-container">
+            <div class="loading-message">
+                ⏳ Carregando quiz final...
+            </div>
+            
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwHj79XbXA8EjlNpyWGDwAP0Y3MWPaZteMS7aX44elhcL16Q/viewform?embedded=true" 
+                    width="100%" 
+                    height="3264" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    onload="document.querySelector('.loading-message').style.display='none'">
+                Loading…
+            </iframe>
+        </div>
+        
+        <div class="completion-message">
+            <h3>🎉 Após completar o quiz:</h3>
+            <p>Você será direcionado para avaliar sua experiência com o jogo!</p>
+            
+            <div class="welcome-options">
+                <a href="avaliacao.html" class="welcome-btn">
+                    📊 IR PARA AVALIAÇÃO
+                </a>
+                <a href="index.html" class="welcome-btn secondary">
+                    🏠 VOLTAR AO MENU
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

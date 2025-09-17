@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Caso 9: Mapeando as Cidades - GROUP BY por localização">
+    
+    <title>Caso 9: Mapeando as Cidades - Detetive de Dados</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="../assets/js/sql-wasm.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="header-content">
+                <div class="game-title">
+                    <span class="title-icon">🔍</span>
+                    DETETIVE DE DADOS
+                    <span class="subtitle">O Mistério da Tabela Perdida</span>
+                </div>
+                <div class="agency-badge">AGÊNCIA DE HARMONIA DIGITAL</div>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <section class="briefing-panel">
+                <div class="panel-header">
+                    <h2>📋 BRIEFING DO CASO</h2>
+                    <div class="case-info">
+                        <div class="case-number">CASO #009</div>
+                        <div class="case-status" id="case-status">EM ANDAMENTO</div>
+                    </div>
+                </div>
+
+                <h1 class="case-title">🗺️ Mapeando as Cidades</h1>
+
+                <div class="case-description">
+                    <div class="story-intro">
+                        <p><strong>🌆 Dia 3 - 14:00 - Análise Geográfica</strong></p>
+                        <p>Com os dados estatísticos por tipo em mãos, o Diretor Chen identifica uma nova necessidade estratégica. Maya Chen apresenta mapas holográficos da região:</p>
+                        <p><em>"Detetive, a distribuição por tipos foi reveladora, mas agora precisamos entender a geografia da conspiração. Onde estão concentrados os cidadãos? Quais cidades podem ser centros de operação? Use GROUP BY para mapear a distribuição populacional por cidade!"</em></p>
+                        <p><strong>Sua missão geográfica:</strong> Agrupe os cidadãos por <strong>cidade</strong> e conte quantos residem em cada localização.</p>
+                    </div>
+
+                    <div class="sql-explanation">
+                        <div class="explanation-header">
+                            <span>🎯</span> OBJETIVO DE APRENDIZADO
+                        </div>
+                        <div class="explanation-content">
+                            <p>Neste caso você vai praticar análise geográfica com SQL:</p>
+                            <ul>
+                                <li>GROUP BY com diferentes colunas (cidade vs tipo)</li>
+                                <li>Análise de distribuição geográfica</li>
+                                <li>Mapeamento de dados por localização</li>
+                                <li>Identificação de concentrações populacionais</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="hint-section">
+                        <div class="hint-header">
+                            <button class="hint-toggle-btn" onclick="toggleHint('hint-1')">
+                                💡 MOSTRAR DICA (Opcional)
+                            </button>
+                        </div>
+                        <div class="hint-content" id="hint-1" style="display: none;">
+                            <p><strong>Dica para análise geográfica:</strong></p>
+                            <p>Para contar registros agrupados por localização:</p>
+                            <p><code>SELECT cidade, COUNT(*) FROM cidadaos GROUP BY cidade</code></p>
+                            <p>• Similar ao caso anterior, mas agrupando por cidade</p>
+                            <p>• Mostra quantos cidadãos vivem em cada cidade</p>
+                            <p>• Útil para identificar concentrações populacionais</p>
+                        </div>
+                    </div>
+
+                    <div class="case-navigation">
+                        <a href="../index.html" class="nav-case-btn">
+                            🏠 MENU PRINCIPAL
+                        </a>
+                        <button class="nav-case-btn disabled" id="next-case-btn" onclick="goToNextCase()" disabled>
+                            🔒 PRÓXIMO CASO (Resolva este primeiro)
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="terminal-panel">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <div class="control-btn close"></div>
+                        <div class="control-btn minimize"></div>
+                        <div class="control-btn maximize"></div>
+                    </div>
+                    <div class="terminal-title">SQL Terminal v2.1.0</div>
+                </div>
+
+                <div class="terminal-content">
+                    <div class="query-builder">
+                        <div class="builder-title">
+                            <span>🔧</span> CONSTRUTOR DE CONSULTA
+                        </div>
+                        <div class="builder-buttons">
+                            <button class="sql-btn" onclick="addToQuery('SELECT')">SELECT</button>
+                            <button class="sql-btn" onclick="addToQuery('cidade')">cidade</button>
+                            <button class="sql-btn" onclick="addToQuery(',')">,</button>
+                            <button class="sql-btn" onclick="addToQuery('COUNT(*)')">COUNT(*)</button>
+                            <button class="sql-btn" onclick="addToQuery('FROM')">FROM</button>
+                            <button class="sql-btn" onclick="addToQuery('cidadaos')">cidadaos</button>
+                            <button class="sql-btn" onclick="addToQuery('GROUP BY')">GROUP BY</button>
+                            <button class="sql-btn" onclick="addToQuery('cidade')">cidade</button>
+                            <button class="sql-btn clear-btn" onclick="clearQuery()">LIMPAR</button>
+                        </div>
+                    </div>
+
+                    <div class="sql-input-section">
+                        <div class="input-label">Digite seu comando SQL:</div>
+                        <div class="input-container">
+                            <span class="prompt">sql></span>
+                            <input type="text" class="sql-input" id="sql-input" 
+                                   placeholder="Digite aqui seu comando SQL..." 
+                                   onkeypress="handleKeyPress(event)">
+                            <button class="execute-btn" onclick="executeQuery()">EXECUTAR</button>
+                        </div>
+                    </div>
+
+                    <div class="results-section">
+                        <div class="results-header">
+                            <span>📊 RESULTADOS</span>
+                            <span class="results-count" id="results-count">Nenhuma consulta executada ainda.</span>
+                        </div>
+                        <div class="results-content" id="results-content">
+                            <div class="no-results">
+                                Digite um comando SQL e pressione EXECUTAR para ver os resultados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="progress-container">
+            <div class="progress-info">
+                <span>📈 PROGRESSO DA INVESTIGAÇÃO</span>
+                <span class="progress-text" id="progress-text">Caso 9 de 12 - Análise Geográfica</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 75%"></div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="achievement-notification" id="achievement">
+        <div class="achievement-content">
+            <div class="achievement-icon">🏆</div>
+            <div>
+                <div class="achievement-title">Conquista Desbloqueada!</div>
+                <div class="achievement-description">Cartógrafo de Dados</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/database.js"></script>
+    <script src="../assets/js/game.js"></script>
+    <script>
+        /**
+         * CASO 9: MAPEANDO AS CIDADES
+         * 
+         * Este script gerencia a lógica específica do nono caso:
+         * - Validação da consulta SELECT cidade, COUNT(*) FROM cidadaos GROUP BY cidade
+         * - Sistema de dicas contextuais para análise geográfica
+         * - Bloqueio do botão próxima fase até resolver
+         * - Interface do construtor de consulta funcional
+         */
+
+        // Estado do caso atual
+        let caseState = {
+            id: 9,
+            completed: false,
+            hintsUsed: 0,
+            attempts: 0,
+            startTime: Date.now()
+        };
+
+        // Consultas aceitas para este caso
+        const acceptedQueries = [
+            "select cidade, count(*) from cidadaos group by cidade",
+            "select cidade, count(*) from cidadaos group by cidade;",
+            "SELECT cidade, COUNT(*) FROM cidadaos GROUP BY cidade",
+            "SELECT cidade, COUNT(*) FROM cidadaos GROUP BY cidade;",
+            "Select cidade, Count(*) From cidadaos Group By cidade",
+            "Select cidade, Count(*) From cidadaos Group By cidade;"
+        ];
+
+        /**
+         * Inicialização do caso
+         */
+        async function initializeCase() {
+            try {
+                console.log('🔄 Inicializando Caso 9...');
+                
+                if (window.gameDB) {
+                    const dbInitialized = await window.gameDB.initialize();
+                    if (!dbInitialized) {
+                        throw new Error('Falha ao inicializar banco de dados');
+                    }
+                } else {
+                    throw new Error('Sistema de banco de dados não encontrado');
+                }
+                
+                console.log('✅ Caso 9 inicializado com sucesso');
+                checkCaseCompletion();
+                
+            } catch (error) {
+                console.error('❌ Erro ao inicializar caso:', error);
+                showError('Erro ao carregar o banco de dados. Recarregue a página.');
+            }
+        }
+
+        /**
+         * Adiciona texto ao campo de input SQL de forma inteligente
+         */
+        function addToQuery(text) {
+            const input = document.getElementById('sql-input');
+            const currentValue = input.value.trim();
+            
+            if (currentValue === '') {
+                input.value = text;
+            } else if (text === 'cidade' && currentValue.toUpperCase().endsWith('SELECT')) {
+                input.value = currentValue + ' cidade';
+            } else if (text === ',' && !currentValue.includes(',')) {
+                input.value = currentValue + ',';
+            } else if (text === 'COUNT(*)' && currentValue.includes(',')) {
+                input.value = currentValue + ' COUNT(*)';
+            } else if (text === 'FROM' && currentValue.includes('COUNT(*)')) {
+                input.value = currentValue + ' FROM';
+            } else if (text === 'cidadaos' && currentValue.toUpperCase().includes('FROM')) {
+                input.value = currentValue + ' cidadaos';
+            } else if (text === 'GROUP BY' && currentValue.includes('cidadaos')) {
+                input.value = currentValue + ' GROUP BY';
+            } else if (text === 'cidade' && currentValue.toUpperCase().includes('GROUP BY')) {
+                input.value = currentValue + ' cidade';
+            } else {
+                const needsSpace = currentValue.length > 0 && !currentValue.endsWith(' ') && text !== ',';
+                input.value = currentValue + (needsSpace ? ' ' : '') + text;
+            }
+            
+            input.focus();
+        }
+
+        /**
+         * Limpa o campo de input SQL
+         */
+        function clearQuery() {
+            document.getElementById('sql-input').value = '';
+            document.getElementById('sql-input').focus();
+        }
+
+        /**
+         * Executa a consulta SQL
+         */
+        async function executeQuery() {
+            const input = document.getElementById('sql-input');
+            const sql = input.value.trim();
+            
+            if (!sql) {
+                showError('Digite uma consulta SQL primeiro.');
+                return;
+            }
+            
+            caseState.attempts++;
+            console.log(`🔍 Tentativa ${caseState.attempts}: ${sql}`);
+            
+            try {
+                const results = window.gameDB.executeQuery(sql);
+                displayResults(results);
+                validateCaseQuery(sql);
+                
+            } catch (error) {
+                console.error('❌ Erro na consulta:', error);
+                showError(`Erro na consulta SQL: ${error.message}`);
+                
+                if (caseState.attempts >= 2) {
+                    showError('💡 Dica: Tente SELECT cidade, COUNT(*) FROM cidadaos GROUP BY cidade');
+                }
+            }
+        }
+
+        /**
+         * Valida se a consulta resolve o caso
+         */
+        function validateCaseQuery(sql) {
+            const normalizedQuery = sql.toLowerCase().trim().replace(/\s+/g, ' ').replace(/;$/, '');
+            
+            console.log('🔍 Validando consulta:');
+            console.log('   Usuário:', normalizedQuery);
+            
+            const isCorrect = acceptedQueries.some(accepted => 
+                accepted.replace(/;$/, '').toLowerCase() === normalizedQuery
+            );
+            
+            if (isCorrect) {
+                completeCaseSuccess();
+            } else {
+                provideFeedback(normalizedQuery);
+                
+                if (caseState.attempts >= 3) {
+                    suggestHint();
+                }
+            }
+        }
+
+        /**
+         * Fornece feedback específico
+         */
+        function provideFeedback(query) {
+            if (!query.includes('select')) {
+                showError('❌ Você precisa usar o comando SELECT.');
+            } else if (!query.includes('from')) {
+                showError('❌ Você precisa usar FROM para especificar a tabela.');
+            } else if (!query.includes('cidadaos')) {
+                showError('❌ Você precisa buscar na tabela "cidadaos".');
+            } else if (!query.includes('count')) {
+                showError('❌ Você precisa usar COUNT(*) para contar registros.');
+            } else if (!query.includes('group by')) {
+                showError('❌ Você precisa usar GROUP BY para agrupar por cidade.');
+            } else if (!query.includes('cidade')) {
+                showError('❌ Você precisa selecionar e agrupar por "cidade".');
+            } else {
+                showError('❌ Verifique a sintaxe. Use: SELECT cidade, COUNT(*) FROM cidadaos GROUP BY cidade');
+            }
+        }
+
+        /**
+         * Marca o caso como completado
+         */
+        function completeCaseSuccess() {
+            caseState.completed = true;
+            
+            document.getElementById('case-status').textContent = 'RESOLVIDO';
+            document.getElementById('case-status').className = 'case-status completed';
+            
+            const nextBtn = document.getElementById('next-case-btn');
+            nextBtn.classList.remove('disabled');
+            nextBtn.disabled = false;
+            nextBtn.innerHTML = '➡️ PRÓXIMO CASO';
+            nextBtn.style.opacity = '1';
+            nextBtn.style.cursor = 'pointer';
+            
+            saveCaseProgress();
+            showAchievement('Cartógrafo de Dados', 'Você mapeou a distribuição geográfica dos dados!');
+            showSuccess('🎉 Excelente mapeamento! Agora podemos ver claramente onde estão concentrados os cidadãos. Neon-City realmente é o centro de tudo, mas há atividades suspeitas em outras cidades também!');
+            
+            console.log('✅ Caso 9 completado com sucesso!');
+        }
+
+        /**
+         * Navega para o próximo caso
+         */
+        function goToNextCase() {
+            if (caseState.completed) {
+                window.location.href = 'caso-10.html';
+            } else {
+                showError('Você precisa resolver este caso primeiro!');
+            }
+        }
+
+        /**
+         * Exibe os resultados da consulta
+         */
+        function displayResults(results) {
+            const container = document.getElementById('results-content');
+            const counter = document.getElementById('results-count');
+            
+            if (!results || results.length === 0) {
+                container.innerHTML = '<div class="no-results">Nenhum resultado encontrado.</div>';
+                counter.textContent = '0 registros';
+                return;
+            }
+            
+            const result = results[0];
+            const { columns, values } = result;
+            
+            let tableHTML = '<table class="results-table">';
+            
+            tableHTML += '<thead><tr>';
+            columns.forEach(col => {
+                tableHTML += `<th>${col}</th>`;
+            });
+            tableHTML += '</tr></thead>';
+            
+            tableHTML += '<tbody>';
+            values.forEach(row => {
+                tableHTML += '<tr>';
+                row.forEach(cell => {
+                    tableHTML += `<td>${cell || ''}</td>`;
+                });
+                tableHTML += '</tr>';
+            });
+            tableHTML += '</tbody></table>';
+            
+            container.innerHTML = tableHTML;
+            counter.textContent = `${values.length} cidades encontradas`;
+            
+            console.log(`📊 Exibindo ${values.length} cidades`);
+        }
+
+        /**
+         * Mostra/esconde dicas
+         */
+        function toggleHint(hintId) {
+            const hintContent = document.getElementById(hintId);
+            const button = document.querySelector(`[onclick="toggleHint('${hintId}')"]`);
+            
+            if (hintContent.style.display === 'none') {
+                hintContent.style.display = 'block';
+                button.textContent = '💡 ESCONDER DICA';
+                button.classList.add('expanded');
+                caseState.hintsUsed++;
+            } else {
+                hintContent.style.display = 'none';
+                button.textContent = '💡 MOSTRAR DICA (Opcional)';
+                button.classList.remove('expanded');
+            }
+        }
+
+        /**
+         * Sugere mostrar dica
+         */
+        function suggestHint() {
+            const hintButton = document.querySelector('.hint-toggle-btn');
+            if (hintButton && !hintButton.classList.contains('expanded')) {
+                hintButton.style.animation = 'pulse 2s infinite';
+                showError('💡 Que tal dar uma olhada na dica? Pode ajudar!');
+            }
+        }
+
+        /**
+         * Manipula teclas pressionadas
+         */
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                executeQuery();
+            }
+        }
+
+        /**
+         * Verifica se o caso já foi completado
+         */
+        function checkCaseCompletion() {
+            const savedProgress = localStorage.getItem('detetive-dados-progress');
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                if (progress.case9?.completed) {
+                    caseState.completed = true;
+                    document.getElementById('case-status').textContent = 'RESOLVIDO';
+                    document.getElementById('case-status').className = 'case-status completed';
+                    
+                    const nextBtn = document.getElementById('next-case-btn');
+                    nextBtn.classList.remove('disabled');
+                    nextBtn.disabled = false;
+                    nextBtn.innerHTML = '➡️ PRÓXIMO CASO';
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.cursor = 'pointer';
+                }
+            }
+        }
+
+        /**
+         * Salva o progresso
+         */
+        function saveCaseProgress() {
+            const progress = JSON.parse(localStorage.getItem('detetive-dados-progress') || '{}');
+            progress.case9 = {
+                completed: true,
+                completedAt: new Date().toISOString(),
+                attempts: caseState.attempts,
+                hintsUsed: caseState.hintsUsed,
+                timeSpent: Date.now() - caseState.startTime
+            };
+            localStorage.setItem('detetive-dados-progress', JSON.stringify(progress));
+        }
+
+        /**
+         * Mostra notificação de conquista
+         */
+        function showAchievement(title, description) {
+            const achievement = document.getElementById('achievement');
+            achievement.querySelector('.achievement-title').textContent = title;
+            achievement.querySelector('.achievement-description').textContent = description;
+            
+            achievement.classList.add('show');
+            
+            setTimeout(() => {
+                achievement.classList.remove('show');
+            }, 4000);
+        }
+
+        /**
+         * Mostra mensagem de sucesso
+         */
+        function showSuccess(message) {
+            const container = document.getElementById('results-content');
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.innerHTML = message;
+            container.insertBefore(successDiv, container.firstChild);
+        }
+
+        /**
+         * Mostra mensagem de erro
+         */
+        function showError(message) {
+            const container = document.getElementById('results-content');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.innerHTML = message;
+            container.insertBefore(errorDiv, container.firstChild);
+            
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.parentNode.removeChild(errorDiv);
+                }
+            }, 5000);
+        }
+
+        // Inicializar caso quando a página carregar
+        document.addEventListener('DOMContentLoaded', initializeCase);
+
+        console.log('🕵️ Caso 9: Mapeando as Cidades carregado');
+    </script>
+</body>
+</html>
+

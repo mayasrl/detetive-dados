@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Relatório de Erro - Detetive de Dados">
+    
+    <title>Erro - Detetive de Dados</title>
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        .iframe-container {
+            background: rgba(93, 26, 26, 0.3);
+            border: 2px solid #d32f2f;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+        
+        .iframe-container iframe {
+            border-radius: 8px;
+            background: white;
+        }
+        
+        .error-intro {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(93, 26, 26, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid #ff4444;
+        }
+        
+        .error-intro h2 {
+            color: #ff4444;
+            margin-bottom: 10px;
+        }
+        
+        .loading-message {
+            text-align: center;
+            color: #ff4444;
+            font-family: 'JetBrains Mono', monospace;
+            padding: 20px;
+        }
+        
+        .error-icon {
+            font-size: 4rem;
+            color: #ff4444;
+            margin-bottom: 20px;
+        }
+        
+        .troubleshooting {
+            background: rgba(22, 33, 62, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .troubleshooting h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+        
+        .troubleshooting ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .troubleshooting li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .troubleshooting li:before {
+            content: "🔧";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-page">
+        <a href="index.html" class="back-btn">← Voltar ao Menu</a>
+        
+        <div class="page-header">
+            <div class="error-icon">⚠️</div>
+            <h1>Sistema de Relatório de Erro</h1>
+            <p>Algo deu errado? Nos ajude a corrigir!</p>
+        </div>
+
+        <div class="error-intro">
+            <h2>🚨 Falha no Sistema Detectada</h2>
+            <p>Nosso sistema de monitoramento detectou um problema. Por favor, preencha o relatório abaixo para nos ajudar a corrigir rapidamente.</p>
+            
+            <div class="command-example">
+                <strong>📊 Dados coletados:</strong> Informações técnicas automáticas<br>
+                <strong>🔒 Privacidade:</strong> Apenas dados técnicos, sem informações pessoais<br>
+                <strong>⚡ Resposta:</strong> Nossa equipe será notificada automaticamente
+            </div>
+        </div>
+        
+        <div class="troubleshooting">
+            <h3>🔧 Soluções Rápidas</h3>
+            <ul>
+                <li>Recarregue a página (F5 ou Ctrl+R)</li>
+                <li>Limpe o cache do navegador</li>
+                <li>Tente usar outro navegador</li>
+                <li>Verifique sua conexão com a internet</li>
+                <li>Desative extensões do navegador temporariamente</li>
+            </ul>
+        </div>
+        
+        <div class="iframe-container">
+            <div class="loading-message">
+                ⏳ Carregando formulário de relatório...
+            </div>
+            
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfqyhfkUk0DnbIG5jXZ1D9CZgJ5fCGh8qduRM0QQsuIAKEsSw/viewform?embedded=true" 
+                    width="100%" 
+                    height="1666" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    onload="document.querySelector('.loading-message').style.display='none'">
+                Loading…
+            </iframe>
+        </div>
+        
+        <div class="content-section">
+            <div class="welcome-options">
+                <a href="index.html" class="welcome-btn">
+                    🏠 VOLTAR AO MENU
+                </a>
+                <a href="tutorial.html" class="welcome-btn secondary">
+                    📖 VER TUTORIAL
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Coletar informações técnicas automaticamente
+        const errorInfo = {
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            url: window.location.href,
+            referrer: document.referrer,
+            screenResolution: `${screen.width}x${screen.height}`,
+            viewport: `${window.innerWidth}x${window.innerHeight}`,
+            language: navigator.language,
+            platform: navigator.platform,
+            cookiesEnabled: navigator.cookieEnabled,
+            onlineStatus: navigator.onLine
+        };
+        
+        console.log('Informações técnicas coletadas:', errorInfo);
+        
+        // Salvar no localStorage para referência
+        localStorage.setItem('lastErrorInfo', JSON.stringify(errorInfo));
+    </script>
+</body>
+</html>
+

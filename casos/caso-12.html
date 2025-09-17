@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Caso 12: O Confronto Final - Operador IN">
+    
+    <title>Caso 12: O Confronto Final - Detetive de Dados</title>
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="../assets/js/sql-wasm.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="header-content">
+                <div class="game-title">
+                    <span class="title-icon">🔍</span>
+                    DETETIVE DE DADOS
+                    <span class="subtitle">O Mistério da Tabela Perdida</span>
+                </div>
+                <div class="agency-badge">AGÊNCIA DE HARMONIA DIGITAL</div>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <section class="briefing-panel">
+                <div class="panel-header">
+                    <h2>📋 BRIEFING DO CASO</h2>
+                    <div class="case-info">
+                        <div class="case-number">CASO #012</div>
+                        <div class="case-status" id="case-status">EM ANDAMENTO</div>
+                    </div>
+                </div>
+
+                <h1 class="case-title">⚡ O Confronto Final</h1>
+
+                <div class="case-description">
+                    <div class="story-intro">
+                        <p><strong>🎯 Dia 4 - 11:45 - A Verdade Revelada</strong></p>
+                        <p>A investigação chegou ao seu clímax. Com todas as evidências coletadas, o Diretor Chen convoca uma reunião de emergência. Maya Chen apresenta as conclusões finais:</p>
+                        <p><em>"Detetive, a conspiração está desvendada! Dr. Aris Quantum é o criador do androide rebelde X-7 Phantom. Eles trabalharam juntos para desestabilizar o sistema. Agora precisamos do relatório final para o tribunal. Selecione o nome, idade e profissão de ambos os suspeitos: 'Dr. Aris Quantum' e 'X-7 Phantom'. Use o operador IN para capturar ambos de uma vez!"</em></p>
+                        <p><strong>Sua missão final:</strong> Selecione o <strong>nome, idade e profissão</strong> dos cidadãos chamados <strong>'Dr. Aris Quantum' e 'X-7 Phantom'</strong>.</p>
+                    </div>
+
+                    <div class="sql-explanation">
+                        <div class="explanation-header">
+                            <span>🎯</span> OBJETIVO DE APRENDIZADO
+                        </div>
+                        <div class="explanation-content">
+                            <p>Neste caso final você vai dominar seleção múltipla:</p>
+                            <ul>
+                                <li><code>IN</code> - Operador para múltiplos valores</li>
+                                <li>Seleção de colunas específicas</li>
+                                <li>Filtros com múltiplos critérios</li>
+                                <li>Relatórios finais estruturados</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="hint-section">
+                        <div class="hint-header">
+                            <button class="hint-toggle-btn" onclick="toggleHint('hint-1')">
+                                💡 MOSTRAR DICA (Opcional)
+                            </button>
+                        </div>
+                        <div class="hint-content" id="hint-1" style="display: none;">
+                            <p><strong>Dica para seleção múltipla:</strong></p>
+                            <p>Para selecionar registros específicos por nome:</p>
+                            <p><code>SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ('Dr. Aris Quantum', 'X-7 Phantom')</code></p>
+                            <p>• Selecione apenas as colunas necessárias</p>
+                            <p>• Use IN para múltiplos valores</p>
+                            <p>• Separe os nomes com vírgula</p>
+                        </div>
+                    </div>
+
+                    <div class="case-navigation">
+                        <a href="../index.html" class="nav-case-btn">
+                            🏠 MENU PRINCIPAL
+                        </a>
+                        <button class="nav-case-btn disabled" id="next-case-btn" onclick="goToNextCase()" disabled>
+                            🔒 FINALIZAR INVESTIGAÇÃO (Resolva este primeiro)
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="terminal-panel">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <div class="control-btn close"></div>
+                        <div class="control-btn minimize"></div>
+                        <div class="control-btn maximize"></div>
+                    </div>
+                    <div class="terminal-title">SQL Terminal v2.1.0</div>
+                </div>
+
+                <div class="terminal-content">
+                    <div class="query-builder">
+                        <div class="builder-title">
+                            <span>🔧</span> CONSTRUTOR DE CONSULTA
+                        </div>
+                        <div class="builder-buttons">
+                            <button class="sql-btn" onclick="addToQuery('SELECT')">SELECT</button>
+                            <button class="sql-btn" onclick="addToQuery('nome')">nome</button>
+                            <button class="sql-btn" onclick="addToQuery(',')">,</button>
+                            <button class="sql-btn" onclick="addToQuery('idade')">idade</button>
+                            <button class="sql-btn" onclick="addToQuery(',')">,</button>
+                            <button class="sql-btn" onclick="addToQuery('profissao')">profissao</button>
+                            <button class="sql-btn" onclick="addToQuery('FROM')">FROM</button>
+                            <button class="sql-btn" onclick="addToQuery('cidadaos')">cidadaos</button>
+                            <button class="sql-btn" onclick="addToQuery('WHERE')">WHERE</button>
+                            <button class="sql-btn" onclick="addToQuery('nome')">nome</button>
+                            <button class="sql-btn" onclick="addToQuery('IN')">IN</button>
+                            <button class="sql-btn" onclick="addToQuery('(')">(</button>
+                            <button class="sql-btn" onclick="addToQuery(\"'Dr. Aris Quantum'\")">'Dr. Aris Quantum'</button>
+                            <button class="sql-btn" onclick="addToQuery(',')">,</button>
+                            <button class="sql-btn" onclick="addToQuery(\"'X-7 Phantom'\")">'X-7 Phantom'</button>
+                            <button class="sql-btn" onclick="addToQuery(')')">)</button>
+                            <button class="sql-btn clear-btn" onclick="clearQuery()">LIMPAR</button>
+                        </div>
+                    </div>
+
+                    <div class="sql-input-section">
+                        <div class="input-label">Digite seu comando SQL:</div>
+                        <div class="input-container">
+                            <span class="prompt">sql></span>
+                            <input type="text" class="sql-input" id="sql-input" 
+                                   placeholder="Digite aqui seu comando SQL..." 
+                                   onkeypress="handleKeyPress(event)">
+                            <button class="execute-btn" onclick="executeQuery()">EXECUTAR</button>
+                        </div>
+                    </div>
+
+                    <div class="results-section">
+                        <div class="results-header">
+                            <span>📊 RESULTADOS</span>
+                            <span class="results-count" id="results-count">Nenhuma consulta executada ainda.</span>
+                        </div>
+                        <div class="results-content" id="results-content">
+                            <div class="no-results">
+                                Digite um comando SQL e pressione EXECUTAR para ver os resultados.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="progress-container">
+            <div class="progress-info">
+                <span>📈 PROGRESSO DA INVESTIGAÇÃO</span>
+                <span class="progress-text" id="progress-text">Caso 12 de 12 - Confronto Final</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 100%"></div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="achievement-notification" id="achievement">
+        <div class="achievement-content">
+            <div class="achievement-icon">🏆</div>
+            <div>
+                <div class="achievement-title">Conquista Desbloqueada!</div>
+                <div class="achievement-description">Mestre Detetive</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../assets/js/database.js"></script>
+    <script src="../assets/js/game.js"></script>
+    <script>
+        /**
+         * CASO 12: O CONFRONTO FINAL
+         * 
+         * Este script gerencia a lógica específica do décimo segundo caso (FINAL):
+         * - Validação da consulta SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ('Dr. Aris Quantum', 'X-7 Phantom')
+         * - Sistema de dicas contextuais para operador IN
+         * - Bloqueio do botão próxima fase até resolver
+         * - Interface do construtor de consulta funcional
+         * - Redirecionamento para avaliacao.html ao completar
+         */
+
+        // Estado do caso atual
+        let caseState = {
+            id: 12,
+            completed: false,
+            hintsUsed: 0,
+            attempts: 0,
+            startTime: Date.now()
+        };
+
+        // Consultas aceitas para este caso
+        const acceptedQueries = [
+            "select nome, idade, profissao from cidadaos where nome in ('dr. aris quantum', 'x-7 phantom')",
+            "select nome, idade, profissao from cidadaos where nome in ('dr. aris quantum', 'x-7 phantom');",
+            "SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ('Dr. Aris Quantum', 'X-7 Phantom')",
+            "SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ('Dr. Aris Quantum', 'X-7 Phantom');",
+            "Select nome, idade, profissao From cidadaos Where nome In ('Dr. Aris Quantum', 'X-7 Phantom')",
+            "Select nome, idade, profissao From cidadaos Where nome In ('Dr. Aris Quantum', 'X-7 Phantom');",
+            'select nome, idade, profissao from cidadaos where nome in ("dr. aris quantum", "x-7 phantom")',
+            'select nome, idade, profissao from cidadaos where nome in ("dr. aris quantum", "x-7 phantom");',
+            'SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ("Dr. Aris Quantum", "X-7 Phantom")',
+            'SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ("Dr. Aris Quantum", "X-7 Phantom");',
+            // Variações com ordem diferente dos nomes
+            "select nome, idade, profissao from cidadaos where nome in ('x-7 phantom', 'dr. aris quantum')",
+            "select nome, idade, profissao from cidadaos where nome in ('x-7 phantom', 'dr. aris quantum');",
+            "SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ('X-7 Phantom', 'Dr. Aris Quantum')",
+            "SELECT nome, idade, profissao FROM cidadaos WHERE nome IN ('X-7 Phantom', 'Dr. Aris Quantum');"
+        ];
+
+        /**
+         * Inicialização do caso
+         */
+        async function initializeCase() {
+            try {
+                console.log('🔄 Inicializando Caso 12 (FINAL)...');
+                
+                if (window.gameDB) {
+                    const dbInitialized = await window.gameDB.initialize();
+                    if (!dbInitialized) {
+                        throw new Error('Falha ao inicializar banco de dados');
+                    }
+                } else {
+                    throw new Error('Sistema de banco de dados não encontrado');
+                }
+                
+                console.log('✅ Caso 12 inicializado com sucesso');
+                checkCaseCompletion();
+                
+            } catch (error) {
+                console.error('❌ Erro ao inicializar caso:', error);
+                showError('Erro ao carregar o banco de dados. Recarregue a página.');
+            }
+        }
+
+        /**
+         * Adiciona texto ao campo de input SQL de forma inteligente
+         */
+        function addToQuery(text) {
+            const input = document.getElementById('sql-input');
+            const currentValue = input.value.trim();
+            
+            if (currentValue === '') {
+                input.value = text;
+            } else if (text === 'nome' && currentValue.toUpperCase().endsWith('SELECT')) {
+                input.value = currentValue + ' nome';
+            } else if (text === ',' && !currentValue.endsWith(',')) {
+                input.value = currentValue + ',';
+            } else if (text === 'idade' && currentValue.includes('nome,')) {
+                input.value = currentValue + ' idade';
+            } else if (text === 'profissao' && currentValue.includes('idade,')) {
+                input.value = currentValue + ' profissao';
+            } else if (text === 'FROM' && currentValue.includes('profissao')) {
+                input.value = currentValue + ' FROM';
+            } else if (text === 'cidadaos' && currentValue.toUpperCase().includes('FROM')) {
+                input.value = currentValue + ' cidadaos';
+            } else if (text === 'WHERE' && currentValue.includes('cidadaos')) {
+                input.value = currentValue + ' WHERE';
+            } else if (text === 'nome' && currentValue.toUpperCase().includes('WHERE')) {
+                input.value = currentValue + ' nome';
+            } else if (text === 'IN' && currentValue.includes('WHERE nome')) {
+                input.value = currentValue + ' IN';
+            } else if (text === '(' && currentValue.toUpperCase().includes('IN')) {
+                input.value = currentValue + ' (';
+            } else if (text === "'Dr. Aris Quantum'" && currentValue.includes('(')) {
+                input.value = currentValue + "'Dr. Aris Quantum'";
+            } else if (text === "'X-7 Phantom'" && currentValue.includes('Dr. Aris Quantum')) {
+                input.value = currentValue + ", 'X-7 Phantom'";
+            } else if (text === ')' && currentValue.includes('X-7 Phantom')) {
+                input.value = currentValue + ')';
+            } else {
+                const needsSpace = currentValue.length > 0 && !currentValue.endsWith(' ') && !currentValue.endsWith(',') && !currentValue.endsWith('(') && !text.startsWith("'") && text !== ',' && text !== ')';
+                input.value = currentValue + (needsSpace ? ' ' : '') + text;
+            }
+            
+            input.focus();
+        }
+
+        /**
+         * Limpa o campo de input SQL
+         */
+        function clearQuery() {
+            document.getElementById('sql-input').value = '';
+            document.getElementById('sql-input').focus();
+        }
+
+        /**
+         * Executa a consulta SQL
+         */
+        async function executeQuery() {
+            const input = document.getElementById('sql-input');
+            const sql = input.value.trim();
+            
+            if (!sql) {
+                showError('Digite uma consulta SQL primeiro.');
+                return;
+            }
+            
+            caseState.attempts++;
+            console.log(`🔍 Tentativa ${caseState.attempts}: ${sql}`);
+            
+            try {
+                const results = window.gameDB.executeQuery(sql);
+                displayResults(results);
+                validateCaseQuery(sql);
+                
+            } catch (error) {
+                console.error('❌ Erro na consulta:', error);
+                showError(`Erro na consulta SQL: ${error.message}`);
+                
+                if (caseState.attempts >= 2) {
+                    showError('💡 Dica: Tente SELECT nome, idade, profissao FROM cidadaos WHERE nome IN (\'Dr. Aris Quantum\', \'X-7 Phantom\')');
+                }
+            }
+        }
+
+        /**
+         * Valida se a consulta resolve o caso
+         */
+        function validateCaseQuery(sql) {
+            const normalizedQuery = sql.toLowerCase().trim().replace(/\s+/g, ' ').replace(/;$/, '');
+            
+            console.log('🔍 Validando consulta:');
+            console.log('   Usuário:', normalizedQuery);
+            
+            const isCorrect = acceptedQueries.some(accepted => 
+                accepted.replace(/;$/, '').toLowerCase() === normalizedQuery
+            );
+            
+            if (isCorrect) {
+                completeCaseSuccess();
+            } else {
+                provideFeedback(normalizedQuery);
+                
+                if (caseState.attempts >= 3) {
+                    suggestHint();
+                }
+            }
+        }
+
+        /**
+         * Fornece feedback específico
+         */
+        function provideFeedback(query) {
+            if (!query.includes('select')) {
+                showError('❌ Você precisa usar o comando SELECT.');
+            } else if (!query.includes('from')) {
+                showError('❌ Você precisa usar FROM para especificar a tabela.');
+            } else if (!query.includes('cidadaos')) {
+                showError('❌ Você precisa buscar na tabela "cidadaos".');
+            } else if (!query.includes('where')) {
+                showError('❌ Você precisa usar WHERE para filtrar os dados.');
+            } else if (!query.includes('nome') || !query.includes('idade') || !query.includes('profissao')) {
+                showError('❌ Você precisa selecionar as colunas: nome, idade, profissao.');
+            } else if (!query.includes('in')) {
+                showError('❌ Você precisa usar o operador IN para múltiplos valores.');
+            } else if (!query.includes('dr. aris quantum') || !query.includes('x-7 phantom')) {
+                showError('❌ Você precisa buscar por "Dr. Aris Quantum" e "X-7 Phantom".');
+            } else {
+                showError('❌ Verifique a sintaxe. Use: SELECT nome, idade, profissao FROM cidadaos WHERE nome IN (\'Dr. Aris Quantum\', \'X-7 Phantom\')');
+            }
+        }
+
+        /**
+         * Marca o caso como completado
+         */
+        function completeCaseSuccess() {
+            caseState.completed = true;
+            
+            document.getElementById('case-status').textContent = 'RESOLVIDO';
+            document.getElementById('case-status').className = 'case-status completed';
+            
+            const nextBtn = document.getElementById('next-case-btn');
+            nextBtn.classList.remove('disabled');
+            nextBtn.disabled = false;
+            nextBtn.innerHTML = '🏆 FINALIZAR INVESTIGAÇÃO';
+            nextBtn.style.opacity = '1';
+            nextBtn.style.cursor = 'pointer';
+            
+            saveCaseProgress();
+            showAchievement('Mestre Detetive', 'Você completou toda a investigação e desvendou o mistério!');
+            showSuccess('🎉 CASO RESOLVIDO! A conspiração foi desvendada! Dr. Aris Quantum e X-7 Phantom foram identificados como os responsáveis pelo caos em Neon-City. Parabéns, Detetive! Você dominou o SQL e salvou a cidade!');
+            
+            console.log('✅ Caso 12 (FINAL) completado com sucesso!');
+        }
+
+        /**
+         * Navega para a avaliação final
+         */
+        function goToNextCase() {
+            if (caseState.completed) {
+                window.location.href = '../avaliacao.html';
+            } else {
+                showError('Você precisa resolver este caso primeiro!');
+            }
+        }
+
+        /**
+         * Exibe os resultados da consulta
+         */
+        function displayResults(results) {
+            const container = document.getElementById('results-content');
+            const counter = document.getElementById('results-count');
+            
+            if (!results || results.length === 0) {
+                container.innerHTML = '<div class="no-results">Nenhum resultado encontrado.</div>';
+                counter.textContent = '0 registros';
+                return;
+            }
+            
+            const result = results[0];
+            const { columns, values } = result;
+            
+            let tableHTML = '<table class="results-table">';
+            
+            tableHTML += '<thead><tr>';
+            columns.forEach(col => {
+                tableHTML += `<th>${col}</th>`;
+            });
+            tableHTML += '</tr></thead>';
+            
+            tableHTML += '<tbody>';
+            values.forEach(row => {
+                tableHTML += '<tr>';
+                row.forEach(cell => {
+                    tableHTML += `<td>${cell || ''}</td>`;
+                });
+                tableHTML += '</tr>';
+            });
+            tableHTML += '</tbody></table>';
+            
+            container.innerHTML = tableHTML;
+            counter.textContent = `${values.length} suspeitos identificados`;
+            
+            console.log(`📊 Exibindo ${values.length} suspeitos finais`);
+        }
+
+        /**
+         * Mostra/esconde dicas
+         */
+        function toggleHint(hintId) {
+            const hintContent = document.getElementById(hintId);
+            const button = document.querySelector(`[onclick="toggleHint('${hintId}')"]`);
+            
+            if (hintContent.style.display === 'none') {
+                hintContent.style.display = 'block';
+                button.textContent = '💡 ESCONDER DICA';
+                button.classList.add('expanded');
+                caseState.hintsUsed++;
+            } else {
+                hintContent.style.display = 'none';
+                button.textContent = '💡 MOSTRAR DICA (Opcional)';
+                button.classList.remove('expanded');
+            }
+        }
+
+        /**
+         * Sugere mostrar dica
+         */
+        function suggestHint() {
+            const hintButton = document.querySelector('.hint-toggle-btn');
+            if (hintButton && !hintButton.classList.contains('expanded')) {
+                hintButton.style.animation = 'pulse 2s infinite';
+                showError('💡 Que tal dar uma olhada na dica? Pode ajudar!');
+            }
+        }
+
+        /**
+         * Manipula teclas pressionadas
+         */
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                executeQuery();
+            }
+        }
+
+        /**
+         * Verifica se o caso já foi completado
+         */
+        function checkCaseCompletion() {
+            const savedProgress = localStorage.getItem('detetive-dados-progress');
+            if (savedProgress) {
+                const progress = JSON.parse(savedProgress);
+                if (progress.case12?.completed) {
+                    caseState.completed = true;
+                    document.getElementById('case-status').textContent = 'RESOLVIDO';
+                    document.getElementById('case-status').className = 'case-status completed';
+                    
+                    const nextBtn = document.getElementById('next-case-btn');
+                    nextBtn.classList.remove('disabled');
+                    nextBtn.disabled = false;
+                    nextBtn.innerHTML = '🏆 FINALIZAR INVESTIGAÇÃO';
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.cursor = 'pointer';
+                }
+            }
+        }
+
+        /**
+         * Salva o progresso
+         */
+        function saveCaseProgress() {
+            const progress = JSON.parse(localStorage.getItem('detetive-dados-progress') || '{}');
+            progress.case12 = {
+                completed: true,
+                completedAt: new Date().toISOString(),
+                attempts: caseState.attempts,
+                hintsUsed: caseState.hintsUsed,
+                timeSpent: Date.now() - caseState.startTime
+            };
+            // Marca a investigação como completamente finalizada
+            progress.investigationCompleted = true;
+            progress.completedAt = new Date().toISOString();
+            localStorage.setItem('detetive-dados-progress', JSON.stringify(progress));
+        }
+
+        /**
+         * Mostra notificação de conquista
+         */
+        function showAchievement(title, description) {
+            const achievement = document.getElementById('achievement');
+            achievement.querySelector('.achievement-title').textContent = title;
+            achievement.querySelector('.achievement-description').textContent = description;
+            
+            achievement.classList.add('show');
+            
+            setTimeout(() => {
+                achievement.classList.remove('show');
+            }, 4000);
+        }
+
+        /**
+         * Mostra mensagem de sucesso
+         */
+        function showSuccess(message) {
+            const container = document.getElementById('results-content');
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.innerHTML = message;
+            container.insertBefore(successDiv, container.firstChild);
+        }
+
+        /**
+         * Mostra mensagem de erro
+         */
+        function showError(message) {
+            const container = document.getElementById('results-content');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.innerHTML = message;
+            container.insertBefore(errorDiv, container.firstChild);
+            
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.parentNode.removeChild(errorDiv);
+                }
+            }, 5000);
+        }
+
+        // Inicializar caso quando a página carregar
+        document.addEventListener('DOMContentLoaded', initializeCase);
+
+        console.log('🕵️ Caso 12: O Confronto Final carregado');
+    </script>
+</body>
+</html>
+
