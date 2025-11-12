@@ -21,7 +21,7 @@
 
 ## 📖 Sobre o Projeto
 
-**Detetive de Dados** é um jogo educativo desenvolvido como tesste para o **Trabalho de Conclusão de Curso (TCC)** do curso de **Ciência da Computação**. O projeto tem como objetivo ensinar conceitos fundamentais de SQL através de uma narrativa investigativa envolvente, tornando o aprendizado de banco de dados mais acessível e divertido.
+**Detetive de Dados** é um jogo educativo desenvolvido como teste para o **Trabalho de Conclusão de Curso (TCC)** do curso de **Ciência da Computação**. O projeto tem como objetivo ensinar conceitos fundamentais de SQL através de uma narrativa investigativa envolvente, tornando o aprendizado de banco de dados mais acessível e divertido.
 
 Os jogadores assumem o papel de um detetive digital em Neon-City, uma metrópole futurística onde humanos e androides coexistem, e devem resolver um mistério usando consultas SQL.
 
